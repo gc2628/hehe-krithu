@@ -1,0 +1,494 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#080808">
+<title>oyy krithuuu 💗</title>
+
+<style>
+:root {
+  --black: #080808;
+  --maroon: #681b38;
+  --deep: #260914;
+  --white: #fff5f7;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+  background: var(--black);
+  color: var(--white);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.page {
+  display: none;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+  padding:
+    max(20px, env(safe-area-inset-top))
+    clamp(14px, 4vw, 22px)
+    max(20px, env(safe-area-inset-bottom));
+  background: radial-gradient(
+    ellipse at center,
+    #260914 0%,
+    #10070b 54%,
+    #080808 100%
+  );
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 2.8dvh, 25px);
+  text-align: center;
+}
+
+.page.active {
+  display: flex;
+  animation: fadeIn .28s ease both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.message {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  flex: 0 0 auto;
+  font-size: clamp(21px, 5.8vw, 30px);
+  font-weight: 600;
+  line-height: 1.48;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+}
+
+.actions {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex: 0 0 auto;
+}
+
+.btn {
+  min-height: 50px;
+  max-width: 100%;
+  padding: 12px 18px;
+  border: 1px solid #8b2a4b;
+  border-radius: 15px;
+  background: var(--maroon);
+  color: var(--white);
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.btn:active {
+  transform: scale(.97);
+}
+
+.btn.secondary {
+  background: #17090e;
+  border-color: #542036;
+}
+
+.emoji-btn {
+  min-width: 58px;
+  min-height: 56px;
+  padding: 9px 15px;
+  font-size: 26px;
+}
+
+.photo {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 90%;
+  max-height: 37dvh;
+  object-fit: contain;
+  flex: 0 1 auto;
+  border-radius: 16px;
+  border: 1px solid #681b385c;
+  box-shadow: 0 0 22px #681b3828;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Page 7: moving photo */
+.corner-photo {
+  position: absolute;
+  z-index: 2;
+  width: clamp(60px, 18vw, 94px);
+  height: clamp(60px, 18vw, 94px);
+  object-fit: cover;
+  border: 2px solid var(--maroon);
+  border-radius: 12px;
+  box-shadow: 0 0 14px #681b3840;
+  transition:
+    top .65s ease,
+    left .65s ease,
+    right .65s ease,
+    bottom .65s ease;
+}
+
+.corner-tl {
+  top: max(12px, env(safe-area-inset-top));
+  left: 12px;
+  right: auto;
+  bottom: auto;
+}
+
+.corner-tr {
+  top: max(12px, env(safe-area-inset-top));
+  right: 12px;
+  left: auto;
+  bottom: auto;
+}
+
+.corner-br {
+  bottom: max(12px, env(safe-area-inset-bottom));
+  right: 12px;
+  top: auto;
+  left: auto;
+}
+
+.corner-bl {
+  bottom: max(12px, env(safe-area-inset-bottom));
+  left: 12px;
+  top: auto;
+  right: auto;
+}
+
+#page7 {
+  gap: clamp(15px, 2.5dvh, 22px);
+}
+
+#page7 .message {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(20px, 5.3vw, 28px);
+}
+
+#page7 .photo {
+  position: relative;
+  z-index: 1;
+  max-width: 74%;
+  max-height: 29dvh;
+}
+
+#page7 .actions {
+  position: relative;
+  z-index: 3;
+}
+
+#page8 .photo {
+  max-height: 38dvh;
+}
+
+/* Narrow phones */
+@media (max-width: 380px) {
+  .page {
+    padding-left: 12px;
+    padding-right: 12px;
+    gap: 15px;
+  }
+
+  .message {
+    font-size: 21px;
+  }
+
+  .btn {
+    padding: 11px 14px;
+    font-size: 15px;
+  }
+
+  .photo {
+    max-width: 94%;
+    max-height: 34dvh;
+  }
+}
+
+/* Short screens and landscape phones */
+@media (max-height: 500px) {
+  .page {
+    justify-content: flex-start;
+    gap: 10px;
+    padding-top: max(12px, env(safe-area-inset-top));
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+  }
+
+  .message {
+    font-size: clamp(18px, 4.5vw, 24px);
+  }
+
+  .photo {
+    max-height: 28dvh;
+  }
+
+  #page7 .photo {
+    max-height: 22dvh;
+  }
+
+  .btn {
+    min-height: 44px;
+    padding: 9px 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<section class="page active" id="page1">
+  <div class="message">oyy krithuuu 💗</div>
+  <div class="actions">
+    <button class="btn emoji-btn" onclick="goTo(2)">🙃</button>
+  </div>
+</section>
+
+<!-- PAGE 2 -->
+<section class="page" id="page2">
+  <div class="message">
+    kannamma i have hurt you a lot and what you feels matters to me the most. reverse cheyaan patila onnum but kannamma i am sorry edo 🙂
+  </div>
+  <div class="actions">
+    <button class="btn emoji-btn" onclick="goTo(3)">🌷</button>
+  </div>
+</section>
+
+<!-- PAGE 3 -->
+<section class="page" id="page3">
+  <div class="actions" id="page3start">
+    <button class="btn emoji-btn" onclick="revealBeauty()">😗</button>
+  </div>
+
+  <img
+    class="photo hidden"
+    id="beautyPhoto"
+    src="./krithu_beauty.jpg"
+    alt=""
+  >
+
+  <div class="message hidden" id="beautyMessage">
+    you are the most beautiful person from the inside and outside 💗
+  </div>
+
+  <div class="actions hidden" id="page3next">
+    <button class="btn emoji-btn" onclick="goTo(4)">😙</button>
+  </div>
+</section>
+
+<!-- PAGE 4 -->
+<section class="page" id="page4">
+  <div class="message">
+    orapp ahno ini olath vaykaan guts indo madamji
+  </div>
+  <div class="actions">
+    <button class="btn" onclick="goTo(5)">ondeda nee idd 💗</button>
+    <button class="btn secondary" id="dodgeButton" onclick="dodge()">ayyeda ila 😌</button>
+  </div>
+</section>
+
+<!-- PAGE 5 -->
+<section class="page" id="page5">
+  <img class="photo" src="./krithu_love.jpg" alt="">
+  <div class="message">i love you the most in my world 💗</div>
+  <div class="actions hidden" id="page5next">
+    <button class="btn emoji-btn" onclick="goTo(6)">😊</button>
+  </div>
+</section>
+
+<!-- PAGE 6 -->
+<section class="page" id="page6">
+  <div class="message">
+    edo you told me ottak irkneya ishtm samadhanam ond elam ok ahnenn but…
+  </div>
+  <div class="actions">
+    <button class="btn" onclick="goTo(7)">
+      oru corneril njnum ondavum kooda 💗
+    </button>
+  </div>
+</section>
+
+<!-- PAGE 7 -->
+<section class="page" id="page7">
+  <img
+    class="corner-photo corner-tl"
+    id="movingPhoto"
+    src="./me_corner.jpg"
+    alt=""
+  >
+
+  <div class="message">
+    I LOVE YOU SO MUCH, krithun nthano vendath ath mathi enkum 💗
+  </div>
+
+  <img class="photo" src="./krithu_corner.jpg" alt="">
+
+  <div class="actions">
+    <button class="btn" onclick="goTo(8)">IMPORTANT</button>
+  </div>
+</section>
+
+<!-- PAGE 8 -->
+<section class="page" id="page8">
+  <div class="message">
+    oru payan req itt shlym chyn nn kettu accept chyth angg vittek edoo😌 (PLEASE🫠)
+  </div>
+
+  <img class="photo" src="./me_final.jpg" alt="">
+
+  <div class="actions">
+    <button class="btn emoji-btn" onclick="restart()">↻</button>
+  </div>
+</section>
+
+<script>
+let currentPage = 1;
+let cornerTimer = null;
+let loveTimer = null;
+
+function goTo(number) {
+  clearTimeout(cornerTimer);
+  clearTimeout(loveTimer);
+
+  const dodgeButton = document.getElementById("dodgeButton");
+  dodgeButton.style.position = "";
+  dodgeButton.style.left = "";
+  dodgeButton.style.top = "";
+  dodgeButton.style.zIndex = "";
+
+  document.querySelectorAll(".page").forEach(page => {
+    page.classList.remove("active");
+  });
+
+  const nextPage = document.getElementById("page" + number);
+  if (!nextPage) return;
+
+  nextPage.classList.add("active");
+  nextPage.scrollTop = 0;
+  currentPage = number;
+
+  if (number === 5) {
+    document.getElementById("page5next").classList.add("hidden");
+
+    loveTimer = setTimeout(() => {
+      if (currentPage === 5) {
+        document.getElementById("page5next").classList.remove("hidden");
+      }
+    }, 1500);
+  }
+
+  if (number === 7) {
+    animateCornerPhoto();
+  }
+}
+
+function revealBeauty() {
+  document.getElementById("page3start").classList.add("hidden");
+  document.getElementById("beautyPhoto").classList.remove("hidden");
+  document.getElementById("beautyMessage").classList.remove("hidden");
+  document.getElementById("page3next").classList.remove("hidden");
+}
+
+function dodge() {
+  const button = document.getElementById("dodgeButton");
+  const page = document.getElementById("page4");
+
+  const maxX = Math.max(0, page.clientWidth - button.offsetWidth - 24);
+  const maxY = Math.max(0, page.clientHeight - button.offsetHeight - 24);
+
+  button.style.position = "fixed";
+  button.style.left = (12 + Math.random() * maxX) + "px";
+  button.style.top = (12 + Math.random() * maxY) + "px";
+  button.style.zIndex = "5";
+}
+
+function animateCornerPhoto() {
+  const photo = document.getElementById("movingPhoto");
+  const positions = ["corner-tl", "corner-tr", "corner-br", "corner-bl"];
+  let index = 0;
+
+  function move() {
+    if (currentPage !== 7) return;
+
+    positions.forEach(position => photo.classList.remove(position));
+    photo.classList.add(positions[index]);
+
+    index = (index + 1) % positions.length;
+    cornerTimer = setTimeout(move, 1300);
+  }
+
+  move();
+}
+
+function restart() {
+  document.getElementById("page3start").classList.remove("hidden");
+  document.getElementById("beautyPhoto").classList.add("hidden");
+  document.getElementById("beautyMessage").classList.add("hidden");
+  document.getElementById("page3next").classList.add("hidden");
+  document.getElementById("page5next").classList.add("hidden");
+
+  const photo = document.getElementById("movingPhoto");
+
+  ["corner-tl", "corner-tr", "corner-br", "corner-bl"].forEach(position => {
+    photo.classList.remove(position);
+  });
+
+  photo.classList.add("corner-tl");
+  goTo(1);
+}
+</script>
+
+</body>
+</html>
+
+
+
